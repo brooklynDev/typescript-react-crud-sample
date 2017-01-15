@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/.bin/nodemon --exec './node_modules/.bin/ts-node -P ./backend app.ts'",
-    "migrate": "./node_modules/.bin/knex migrate:latest"
+    "migrate": "./node_modules/.bin/knex migrate:latest",
+    "build": "./node_modules/.bin/webpack --config ./webpack.config.prod.js -p",
+    "prod": "NODE_ENV=production ./node_modules/.bin/ts-node app.ts"
   },
   "keywords": [],
   "author": "",
