@@ -9,7 +9,7 @@ interface PersonFormProps {
     cancelClick: () => void;
 }
 
-export class PersonForm extends React.Component<PersonFormProps, PersonInterface> {
+export class PersonForm extends React.Component<PersonFormProps, Partial<PersonInterface>> {
     constructor(props: PersonFormProps){
         super(props);
         this.onTextChange = this.onTextChange.bind(this);
@@ -25,7 +25,7 @@ export class PersonForm extends React.Component<PersonFormProps, PersonInterface
     }
 
     componentWillReceiveProps(props: PersonFormProps) {
-        this.setState({...this.state, person: props.person ? {...props.person} : {id: 0, firstName: '', lastName: '', age: 0}});
+        this.setState({person: props.person ? {...props.person} : {id: 0, firstName: '', lastName: '', age: 0}});
     }
 
     onTextChange(e: any) {

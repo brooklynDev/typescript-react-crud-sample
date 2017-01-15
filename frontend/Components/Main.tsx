@@ -11,7 +11,7 @@ interface MainState {
     personFormButtonType: PersonFormButtonType
 }
 
-export class Main extends React.Component<undefined, MainState & PeopleInterface> {
+export class Main extends React.Component<undefined, Partial<MainState & PeopleInterface>> {
     constructor(){
         super();
         this.state = {
@@ -33,14 +33,14 @@ export class Main extends React.Component<undefined, MainState & PeopleInterface
     }
 
     editClick(person: Person) {
-        this.setState({...this.state, showPersonForm: true, personFormPerson: person, personFormButtonType: 'edit'});
+        this.setState({showPersonForm: true, personFormPerson: person, personFormButtonType: 'edit'});
     }
 
     async formButtonClick(person: Person) {
         let func = this.state.personFormButtonType === 'edit' ? axios.put : axios.post;
         await func('/people', person);
         await this.loadPeople();
-        this.setState({...this.state, showPersonForm: false});
+        this.setState({showPersonForm: false});
     }
 
     async componentDidMount() {
@@ -49,15 +49,15 @@ export class Main extends React.Component<undefined, MainState & PeopleInterface
 
     async loadPeople(){
         let people = await axios.get('/people');
-        this.setState({...this.state, people: people.data});
+        this.setState({people: people.data});
     }
 
     newPersonClick() {
-        this.setState({...this.state, showPersonForm: true, personFormPerson: null, personFormButtonType: 'add'});
+        this.setState({showPersonForm: true, personFormPerson: null, personFormButtonType: 'add'});
     }
 
     personFormCancelClick() {
-        this.setState({...this.state, showPersonForm: false});
+        this.setState({showPersonForm: false});
     }
 
     render() {

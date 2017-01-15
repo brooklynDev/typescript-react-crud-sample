@@ -15,7 +15,9 @@ app.use(urlencoded({ extended: false }));
 app.use(json());
 
 if (process.env.NODE_ENV !== 'production') {
-    fs.unlinkSync('./backend/public/bundle.js');
+    try {
+        fs.unlinkSync('./backend/public/bundle.js');
+    }catch(e) {}
     const config = require('./webpack.config');
     const compiler = webpack(config);
     app.use(require('webpack-dev-middleware')(compiler, {
