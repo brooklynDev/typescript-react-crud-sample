@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "outFile": "../public/bundle.js",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "allowJs": true
+    }
+}
