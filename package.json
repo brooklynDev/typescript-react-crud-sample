@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec './node_modules/.bin/ts-node -P ./backend app.ts'",
+    "start": "./node_modules/.bin/nodemon --exec './node_modules/.bin/ts-node -P ./backend app.ts'",
     "migrate": "./node_modules/.bin/knex migrate:latest"
   },
   "keywords": [],
@@ -25,6 +25,7 @@
     "express": "^4.14.0",
     "knex": "^0.12.6",
     "mysql": "^2.12.0",
+    "nodemon": "^1.11.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-hot-loader": "^1.3.1",
